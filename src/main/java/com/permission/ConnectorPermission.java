@@ -14,6 +14,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.dao.UserLogin;
 
 public class ConnectorPermission {
+	private enum Perm {
+	    editor, useonly, none;
+	}
 	final String add_query="//*[text()='AutoTestMongo']/ancestor::div[contains(@class,'head')]/descendant::div[contains(@class,'add-query')]";
 	final String option_menu="//*[text()='AutoTestMongo']/ancestor::div[contains(@class,'head')]/descendant::div[contains(@class,'option')]";
 	final String edit_permission=option_menu+"/*[contains(@class,'edit-permission')]";
@@ -50,15 +53,18 @@ public class ConnectorPermission {
 		loginOtherUser(driver);
 		gotoConnector(driver);
 		Boolean menu_opt=false;
-		switch(permission)
+		Perm permm=Perm.valueOf(permission);
+		switch(permm)
 		{
-		case("useonly"):
+		case useonly:
 			menu_opt=checkPreviewOnly(driver);
 			
 			break;
-		case("none"):
+		case none:
 			menu_opt=checkNone(driver);
 			
+			break;
+		default:
 			break;
 			
 		}

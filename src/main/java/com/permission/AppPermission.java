@@ -16,7 +16,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.dao.UserLogin;
 
 
+
 public class AppPermission {
+	private enum Perm {
+	    editor, useonly, none;
+	}
 	final String appOptions="//div[@data-appname='AutoApp']/descendant::div[@class='ui vertical menu card-menu']";
 	final String editPermission="//div[@data-appname='AutoApp']/descendant::div[contains(@class,'edit-permission')]";
 	final String saveBtn="//*[contains(@class,'save-permission')]";
@@ -55,17 +59,18 @@ public class AppPermission {
 		js_exe.executeScript("arguments[0].click();", element);
 		driver.findElement(By.xpath(saveBtn)).click();
 		loginOtherUser(driver);
-		switch(permission)
+		Perm permm = Perm.valueOf(permission);
+		switch(permm)
 		{
-		case("editor"):
+		case editor:
 			menu_opt=checkEditor(driver);
 			hf_value=gethfPermission(driver);
 			break;
-		case("useonly"):
+		case useonly:
 			menu_opt=checkPreviewOnly(driver);
 			hf_value=gethfPermission(driver);
 			break;
-		case("none"):
+		case none :
 			menu_opt=checkNone(driver);
 			hf_value="0000";
 			break;

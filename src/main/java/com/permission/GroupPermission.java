@@ -9,7 +9,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class GroupPermission extends AppPermission{
-
+	private enum Perm {
+	    editor, useonly, none;
+	}
 	
 	final String manage_Users="//div[@data-header='Users']";
 	final String manage_Groups="//div[@class='add-new-btn open-add-new-group-screen']";
@@ -98,17 +100,18 @@ public class GroupPermission extends AppPermission{
 		String menu_opt;
 		String hf_value=menu_opt="";
 		loginOtherUser(driver);
-		switch(permission)
+		Perm permm=Perm.valueOf(permission);
+		switch(permm)
 		{
-		case("editor"):
+		case editor:
 			menu_opt=checkEditor(driver);
 			hf_value=gethfPermission(driver);
 			break;
-		case("useonly"):
+		case useonly:
 			menu_opt=checkPreviewOnly(driver);
 			hf_value=gethfPermission(driver);
 			break;
-		case("none"):
+		case none:
 			menu_opt=checkNone(driver);
 			hf_value="0000";
 			break;
