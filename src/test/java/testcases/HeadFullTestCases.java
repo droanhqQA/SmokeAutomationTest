@@ -24,11 +24,12 @@ import org.testng.annotations.Test;
 import com.connectors.AddingConnector;
 import com.dao.UserDAO;
 import com.dao.UserLogin;
+import com.utils.Base_Class;
 import com.utils.TakeScreenshots;
 
-public class HeadFullTestCases {
+public class HeadFullTestCases extends Base_Class {
 	AddingConnector connector;
-	ChromeDriver driver ;
+	
 	FileInputStream fs ;
 	
 	String testName="";
@@ -40,49 +41,9 @@ public class HeadFullTestCases {
 	@BeforeMethod
 	public void setUp() throws IOException
 	{
-		Timestamp currentTimestamp = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
-		System.out.println(currentTimestamp);
-		//Path of the excel file
-		final URL resource = ConnectorsTest.class.getResource("/Automation.xlsx");
-	       System.out.println(resource);
-		 fs = new FileInputStream("/"+(resource.toString().substring("file:/".length(),resource.toString().length())));
+		BrowserSetUp();
+					connector = new AddingConnector(driver);
 				
-				//Creating a workbook
-				XSSFWorkbook workbook = new XSSFWorkbook(fs);
-				XSSFSheet user_sheet = workbook.getSheetAt(0);
-				XSSFSheet con_sheet = workbook.getSheetAt(1);
-				UserDAO userDAO= new UserDAO(fs, workbook, user_sheet);
-				//ConDetailDAO detailDAO = new ConDetailDAO(fs, workbook, con_sheet);
-				
-				
-				
-				String u_name = userDAO.getU_name();
-				String u_pass = userDAO.getU_pass();
-				String con_name,con_string,con_uname,con_upass,con_db;
-				//System.out.println(detailDAO.connectionName()+"\n"+detailDAO.connectionString());
-				final URL driver_path = ConnectorsTest.class.getResource("/chromedriver.exe");
-			       System.out.println(driver_path);
-				
-				System.setProperty("webdriver.chrome.driver","/var/lib/jenkins/driver/chromedriver");
-				ChromeOptions options = new ChromeOptions();
-						options.addArguments("headless");
-						options.addArguments("window-size=1920,1080");
-						options.addArguments("incognito");
-//						ChromeDriver driver = new ChromeDriver(options);
-
-				driver = new ChromeDriver(options);
-			UserLogin user = new UserLogin(driver);
-				
-				
-			connector = new AddingConnector(driver);
-				driver.get("https://ubuntu.onprem.dronahq.com/");
-				driver.manage().deleteAllCookies();
-				//driver.manage().timeouts().pageLoadTimeout(-1,TimeUnit.SECONDS);
-				driver.manage().window().maximize();
-				user.login(u_name,u_pass);
-				
-				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-				//connector.connectorDetails(con_string);
 				connector.navigatetoConnector();
 				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 				
