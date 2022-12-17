@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="mongoDB(failed)">
+    <parameter name="connectionString" value="N"/>
+    <parameter name="sheet" value="1"/>
+    <parameter name="db" value="mongo"/>
+    <classes>
+      <class name="testcases.ConnectorsTest">
+        <methods>
+          <include name="saveConnection"/>
+          <include name="startTest"/>
+          <include name="driverClose"/>
+          <include name="addQuery"/>
+          <include name="connectionTest"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- testcases.ConnectorsTest -->
+    </classes>
+  </test> <!-- mongoDB(failed) -->
+  <test thread-count="5" name="postgre(failed)">
+    <parameter name="connectionString" value="Y"/>
+    <parameter name="sheet" value="2"/>
+    <parameter name="db" value="postgre"/>
+    <classes>
+      <class name="testcases.ConnectorsTest">
+        <methods>
+          <include name="saveConnection"/>
+          <include name="startTest"/>
+          <include name="driverClose"/>
+          <include name="addQuery"/>
+          <include name="connectionTest"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- testcases.ConnectorsTest -->
+    </classes>
+  </test> <!-- postgre(failed) -->
+</suite> <!-- Failed suite [Suite] -->

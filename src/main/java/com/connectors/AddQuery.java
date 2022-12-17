@@ -41,7 +41,7 @@ public class AddQuery {
 		}
 		driver.findElement(By.id("query_name")).sendKeys("TestQ");//QueryName
 		
-		
+		//let CodeMirrorInstance = document.querySelector('.major-section .fields .CodeMirror-wrap').CodeMirror.setValue("test");
 		driver.findElement(By.id("limit")).sendKeys("1");//Limit
 		driver.findElement(By.xpath("//*[@class='hq-link-btn d-flex align-center mr-3 pointer testquery']")).click();//Test Query
 	}

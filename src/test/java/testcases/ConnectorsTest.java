@@ -32,11 +32,12 @@ import com.connectors.*;
 
 import com.dao.UserDAO;
 import com.dao.UserLogin;
+import com.utils.Base_Class;
 import com.utils.TakeScreenshots;
 
-public class ConnectorsTest {
+public class ConnectorsTest extends Base_Class {
 	AddingConnector connector;
-	ChromeDriver driver;
+//	ChromeDriver driver;
 	FileInputStream fs;
 
 	String testName = "";
@@ -49,56 +50,58 @@ public class ConnectorsTest {
 
 	@BeforeMethod
 	public void setUp() throws IOException {
-		Timestamp currentTimestamp = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
-		System.out.println(currentTimestamp);
+//		Timestamp currentTimestamp = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
+//		System.out.println(currentTimestamp);
 		// Path of the excel file
 //		final URL resource = ConnectorsTest.class.getResource("/Automation.xlsx");
 //		System.out.println(resource);
 //		fs = new FileInputStream("/"+(resource.toString().substring("file:/".length(), resource.toString().length())));
-		fs = new FileInputStream("C:\\Users\\Vinayak Hene\\eclipse-workspace\\UbuntuSmokeAutomation123\\src\\main\\resources\\Automation.xlsx");
+//		fs = new FileInputStream("C:\\Users\\Vinayak Hene\\eclipse-workspace\\UbuntuSmokeAutomation123\\src\\main\\resources\\Automation.xlsx");
 		// Creating a workbook
-		XSSFWorkbook workbook = new XSSFWorkbook(fs);
-		XSSFSheet user_sheet = workbook.getSheetAt(0);
-		XSSFSheet con_sheet = workbook.getSheetAt(1);
-		UserDAO userDAO = new UserDAO(fs, workbook, user_sheet);
-		// ConDetailDAO detailDAO = new ConDetailDAO(fs, workbook, con_sheet);
-
-		String u_name = userDAO.getU_name();
-		String u_pass = userDAO.getU_pass();
-		String con_name, con_string, con_uname, con_upass, con_db;
+//		XSSFWorkbook workbook = new XSSFWorkbook(fs);
+//		XSSFSheet user_sheet = workbook.getSheetAt(0);
+//		XSSFSheet con_sheet = workbook.getSheetAt(1);
+//		UserDAO userDAO = new UserDAO(fs, workbook, user_sheet);
+//		// ConDetailDAO detailDAO = new ConDetailDAO(fs, workbook, con_sheet);
+//
+//		String u_name = userDAO.getU_name();
+//		String u_pass = userDAO.getU_pass();
+//		String con_name, con_string, con_uname, con_upass, con_db;
 		// System.out.println(detailDAO.connectionName()+"\n"+detailDAO.connectionString());
 //		final URL driver_path = ConnectorsTest.class.getResource("/chromedriver.exe");
 //		System.out.println(driver_path);
 
 //		System.setProperty("webdriver.chrome.driver","/var/lib/jenkins/driver/chromedriver");
-		System.setProperty("webdriver.chrome.driver","C:\\Users\\Vinayak Hene\\git\\UbuntuSmokeAutomation\\src\\main\\resources\\Browser\\chromedriver.exe");
-		
-				ChromeOptions options = new ChromeOptions();
-//				options.addArguments("--headless");
-				options.addArguments("--window-size=1920,1080");
-				options.addArguments("--no-sandbox");
-				options.addArguments("--disable-setuid-sandbox");
-				options.setAcceptInsecureCerts(true);
-						//options.addArguments("--remote-debugging-port=9222");
-//						options.addArguments("disable-gpu");
-//						ChromeDriver driver = new ChromeDriver(options);
+//		System.setProperty("webdriver.chrome.driver","C:\\Users\\Vinayak Hene\\git\\UbuntuSmokeAutomation\\src\\main\\resources\\Browser\\chromedriver.exe");
+//		
+//				ChromeOptions options = new ChromeOptions();
+////				options.addArguments("--headless");
+//				options.addArguments("--window-size=1920,1080");
+//				options.addArguments("--no-sandbox");
+//				options.addArguments("--disable-setuid-sandbox");
+//				options.setAcceptInsecureCerts(true);
+//						//options.addArguments("--remote-debugging-port=9222");
+////						options.addArguments("disable-gpu");
+////						ChromeDriver driver = new ChromeDriver(options);
+//
+//		driver = new ChromeDriver(options);
+//		
+//		//driver = new ChromeDriver();
+//		UserLogin user = new UserLogin(driver);
 
-		driver = new ChromeDriver(options);
-		
-		//driver = new ChromeDriver();
-		UserLogin user = new UserLogin(driver);
-
-		connector = new AddingConnector(driver);
-		
-		driver.get("https://ubuntu.onprem.dronahq.com/");
-		driver.manage().window().maximize();
-		driver.manage().deleteAllCookies();
-		// driver.manage().timeouts().pageLoadTimeout(-1,TimeUnit.SECONDS);
-		//driver.manage().window().maximize();
-		user.login(u_name, u_pass);
-
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//		
+//
+//		
+//		driver.get("https://ubuntu.onprem.dronahq.com/");
+//		driver.manage().window().maximize();
+//		driver.manage().deleteAllCookies();
+//		// driver.manage().timeouts().pageLoadTimeout(-1,TimeUnit.SECONDS);
+//		//driver.manage().window().maximize();
+//		user.login(u_name, u_pass);
+		BrowserSetUp();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 		// connector.connectorDetails(con_string);
+		connector = new AddingConnector(driver);
 		connector.navigatetoConnector();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
@@ -185,7 +188,7 @@ public class ConnectorsTest {
 
 	@Test(retryAnalyzer = RetryAnalyzer.class)
 	@Parameters({ "sheet", "db" })
-	public void connectionTestApi(int sheetNo, String db) {
+	public void connectionTestApi(int sheetNo, String db) throws IOException {
 		String res;
 		if (db.equalsIgnoreCase("graphql"))
 			res = connector.connectorDetails_graphql(sheetNo, "N");
@@ -196,7 +199,7 @@ public class ConnectorsTest {
 //retryAnalyzer = RetryAnalyzer.class
 	@Test(retryAnalyzer = RetryAnalyzer.class)
 	@Parameters({ "sheet", "db" })
-	public void connectionSaveApi(int sheetNo, String db) {
+	public void connectionSaveApi(int sheetNo, String db) throws IOException {
 		String res;
 		if (db.equalsIgnoreCase("graphql"))
 			res = connector.connectorDetails_graphql(sheetNo, "save");
@@ -207,7 +210,7 @@ public class ConnectorsTest {
 //(retryAnalyzer = RetryAnalyzer.class)
 	@Test(retryAnalyzer = RetryAnalyzer.class,dependsOnMethods = "connectionSaveApi")
 	@Parameters({ "sheet", "db" })
-	public void connectionAddApi(int sheetNo, String db) {
+	public void connectionAddApi(int sheetNo, String db) throws IOException {
 		String res;
 		if (db.equalsIgnoreCase("graphql"))
 			res = connector.connectorDetails_graphql(sheetNo, "add");

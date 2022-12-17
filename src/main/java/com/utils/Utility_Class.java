@@ -3,6 +3,7 @@ package com.utils;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -21,7 +22,10 @@ public class Utility_Class
 	
 	public static  String GetExcelData(int sheetIndex, int rowIndex, int celIndex  ) throws IOException
   {
-		 FilePath= new FileInputStream ("C:\\Users\\Vinayak Hene\\eclipse-workspace\\UbuntuSmokeAutomation123\\src\\main\\resources\\Automation.xlsx");
+		final URL resource = Utility_Class.class.getResource("/Automation.xlsx");
+	//	System.out.println("file_path"+resource.getFile());
+		FilePath= new FileInputStream(resource.getFile());
+		// FilePath= new FileInputStream ("C:\\Users\\Vinayak Hene\\eclipse-workspace\\UbuntuSmokeAutomation123\\src\\main\\resources\\Automation.xlsx");
 		 workbook=new XSSFWorkbook(FilePath);
 	     sheet =workbook.getSheetAt(sheetIndex);
 		 String value = sheet.getRow(rowIndex).getCell(celIndex).toString();

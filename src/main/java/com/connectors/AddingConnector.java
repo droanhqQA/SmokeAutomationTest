@@ -20,6 +20,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.utils.GetTimeouts;
+import com.utils.Utility_Class;
 
 
 
@@ -27,10 +28,12 @@ import com.utils.GetTimeouts;
 public class AddingConnector  {
 	WebDriver driver;
 	Long max_time,min_time;
+	 
 	
 	public AddingConnector(WebDriver driver){
 		// TODO Auto-generated constructor stub
 		this.driver=driver;
+	
 		GetTimeouts timeouts = new GetTimeouts();
 		max_time = timeouts.getMax_time();
 		min_time = timeouts.getMin_time();
@@ -54,24 +57,16 @@ public class AddingConnector  {
 	}
 	String connectorDetails_details(int sheet_no,String save) throws IOException
 	{
-		final URL resource = AddingConnector.class.getResource("/Automation.xlsx");
-	       System.out.println(resource);
-		
-		FileInputStream  fs = new FileInputStream((resource.toString().substring("file:/".length(),resource.toString().length())));
-		
-		//Creating a workbook
-		XSSFWorkbook workbook = new XSSFWorkbook(fs);
-		XSSFSheet con_sheet = workbook.getSheetAt(sheet_no);
-		
+
 		String path,host,port,db,username,password,name;
-		System.out.println(con_sheet.getSheetName());
-		host=con_sheet.getRow(1).getCell(1).toString();
-		port = con_sheet.getRow(2).getCell(1).toString();
-		db = con_sheet.getRow(3).getCell(1).toString();
-		username = con_sheet.getRow(4).getCell(1).toString();
-		password = con_sheet.getRow(5).getCell(1).toString();
-		path  = con_sheet.getRow(6).getCell(1).toString();
-		name = con_sheet.getRow(7).getCell(1).toString();
+
+		host=Utility_Class.GetExcelData(sheet_no, 1, 1);
+		port=Utility_Class.GetExcelData(sheet_no, 2, 1);
+		db=Utility_Class.GetExcelData(sheet_no, 3, 1);
+		username=Utility_Class.GetExcelData(sheet_no, 4, 1);
+		password=Utility_Class.GetExcelData(sheet_no, 5, 1);
+		path=Utility_Class.GetExcelData(sheet_no, 6, 1);
+		name=Utility_Class.GetExcelData(sheet_no, 7, 1);
 		System.out.print(host+" "+port+" "+db+" "+username+" "+password+"\n"+path);
 		
 		System.out.println("inside connector_details");
@@ -118,17 +113,11 @@ public class AddingConnector  {
 	String connectorDetails_string(int sheet_no,String save) throws IOException
 	{
 		System.out.println("inside connector_details");
-		final URL resource = AddingConnector.class.getResource("/Automation.xlsx");
-	       System.out.println(resource);
+		String con_name =Utility_Class.GetExcelData(sheet_no, 1, 1);
 		
-		FileInputStream  fs = new FileInputStream((resource.toString().substring("file:/".length(),resource.toString().length())));
-		//Creating a workbook
-		XSSFWorkbook workbook = new XSSFWorkbook(fs);
-		XSSFSheet user_sheet = workbook.getSheetAt(0);
-		XSSFSheet con_sheet = workbook.getSheetAt(sheet_no);
-		String con_name =con_sheet.getRow(1).getCell(1).toString();
-		String con_string= con_sheet.getRow(2).getCell(1).toString();
-		String path = con_sheet.getRow(3).getCell(1).toString();
+		String con_string=Utility_Class.GetExcelData(sheet_no, 2,1);
+		
+		String path =Utility_Class.GetExcelData(sheet_no, 3, 1);
 		System.out.println(path);
 		String add = "body > div.console-body.pusher > div.header.main > div.header-region > div.header-functions.smaller-font-size > div.add-new-btn.add-category-button";
 		new WebDriverWait(driver,Duration.ofSeconds(120)).until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(add))));
@@ -224,34 +213,21 @@ public class AddingConnector  {
 		System.out.println(get);
 		return get.toString();
 	}
-	public String connectorDetails_api(int sheet_no,String save)
+	public String connectorDetails_api(int sheet_no,String save) throws IOException
 	{
 		String name,api_key,url;
-		FileInputStream fs;
-		XSSFWorkbook workbook;
-		XSSFSheet con_sheet=null;
-		try {
-//			final URL resource = AddingConnector.class.getResource("/Automation.xlsx");
-//		       System.out.println(resource);
-//			
-//			fs = new FileInputStream((resource.toString().substring("file:/".length(),resource.toString().length())));
-			fs = new FileInputStream("C:\\Users\\Vinayak Hene\\git\\UbuntuSmokeAutomation\\src\\main\\resources\\Automation.xlsx");
-			workbook = new XSSFWorkbook(fs);
-			con_sheet = workbook.getSheetAt(sheet_no);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		//Creating a workbook
 		
-		name = con_sheet.getRow(1).getCell(1).toString();
-		api_key=con_sheet.getRow(2).getCell(1).toString();
-		url = con_sheet.getRow(3).getCell(1).toString();
+		name =Utility_Class.GetExcelData(sheet_no, 1, 1);
+		
+		api_key=Utility_Class.GetExcelData(sheet_no, 2, 1);
+		url = Utility_Class.GetExcelData(sheet_no, 3, 1);
 		if(save.contains("add"))
 		{
 			String qname,qurl,add_path;
-			qname=con_sheet.getRow(6).getCell(1).toString();
-			qurl=con_sheet.getRow(5).getCell(1).toString();
+			qname=Utility_Class.GetExcelData(sheet_no, 6, 1);
+			qurl=Utility_Class.GetExcelData(sheet_no, 5, 1);
 			//add_path = con_sheet.getRow(4).getCell(1).toString();
 			driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 			add_path = "//*[text()='AutoApi']/ancestor-or-self::div[@class='table-row']/div/div[4]/div";
@@ -350,7 +326,7 @@ public class AddingConnector  {
 		
 	}
 	
-	public String connectorDetails_graphql(int sheet_no,String save)
+	public String connectorDetails_graphql(int sheet_no,String save) throws IOException
 	{
 		String name,url;
 		FileInputStream fs;
@@ -369,11 +345,11 @@ public class AddingConnector  {
 		}
 		//Creating a workbook
 		
-		name = con_sheet.getRow(1).getCell(1).toString();
-		url = con_sheet.getRow(2).getCell(1).toString();
+		name =Utility_Class.GetExcelData(sheet_no, 1, 1);
+		url = Utility_Class.GetExcelData(sheet_no, 2, 1);
 		if(save.contains("add"))
 		{
-			String query =con_sheet.getRow(3).getCell(1).toString();
+			String query =Utility_Class.GetExcelData(sheet_no, 3, 1);
 			//String query='{  country(code: "BR") {    name    native    emoji    currency    languages {      code      name    }  }}';
 			//String add_path = con_sheet.getRow(4).getCell(1).toString();
 			String add_path = "//*[text()='AutoGraphQL']/ancestor-or-self::div[@class='table-row']/div/div[4]/div";
