@@ -168,15 +168,18 @@ public class AppPermission {
 		loginOtherUser(driver);
 		gotoConnector(driver);
 		Boolean menu_opt=false;
-		switch(permission)
+		Perm permm= Perm.valueOf(permission);
+		switch(permm)
 		{
-		case("useonly"):
+		case useonly:
 			menu_opt=checkUseOnly(driver);
 			
 			break;
-		case("none"):
+		case none:
 			menu_opt=checkConnNone(driver);
 			
+			break;
+		default:
 			break;
 			
 		}
