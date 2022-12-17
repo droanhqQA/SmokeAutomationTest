@@ -32,19 +32,14 @@ public class Base_Class {
 //		
 		String os=System.getProperty("os.name").toLowerCase();
 		System.out.println("OS name: "+os);
-		String driver_type = os.contains("windows") ? "/chromedriver.exe" :"/chromedriver";
-		URL res = Base_Class.class.getResource(driver_type);
-		System.out.println(res);
-		File file=null;
-		try {
-			file = Paths.get(res.toURI()).toFile();
-		} catch (URISyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String absolutePath = file.getAbsolutePath();
-		System.out.println(absolutePath);
-		System.setProperty("webdriver.chrome.driver", absolutePath);
+		String driver_type = os.contains("windows") ? "/chromedriver.exe" :"/var/lib/jenkins/driver/chromedriver";
+		final URL resource = Base_Class.class.getResource(driver_type);
+		if(os.contains("windows"))
+				{
+			System.setProperty("webdriver.chrome.driver", resource.getFile());
+				}
+		else
+			System.setProperty("webdriver.chrome.driver", driver_type);
 		
 	   
 		options = new ChromeOptions();
