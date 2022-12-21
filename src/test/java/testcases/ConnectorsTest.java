@@ -157,17 +157,14 @@ public class ConnectorsTest extends Base_Class {
 	@Parameters({ "db", "sheet" })
 	public void addQuery(@Optional String db, String sheet) throws InterruptedException, IOException {
 		// fs = new FileInputStream("D:\\Nitin\\DronaDeletecs\\Automation.xlsx");
-		final URL resource = ConnectorsTest.class.getResource("/Automation.xlsx");
-		System.out.println(resource);
-		fs = new FileInputStream((resource.toString().substring("file:/".length(), resource.toString().length())));
 		int sheetNo = Integer.parseInt(sheet);
 		System.out.println("Sheet number: " + sheetNo);
 		if (db.equalsIgnoreCase("mongo")) {
 			System.out.println("Mongo");
-			new AddQuery(fs, sheetNo).mongoQuery(driver);
+			new AddQuery().mongoQuery(driver);
 		} else {
 			System.out.println("Postgre");
-			new AddQuery(fs, sheetNo).postgreQuery(driver);
+			new AddQuery().postgreQuery(driver);
 		}
 
 		driver.manage().timeouts().implicitlyWait(25, TimeUnit.MILLISECONDS);
