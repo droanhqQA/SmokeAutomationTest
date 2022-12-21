@@ -17,14 +17,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class AddQuery {
 	
 	
-	XSSFWorkbook workbook;
-	XSSFSheet con_sheet;
-	
-	public AddQuery(FileInputStream fs,int sheetNo) throws IOException
-	{
-		workbook =new XSSFWorkbook(fs);
-		con_sheet = workbook.getSheetAt(sheetNo);
-	}
 	
 	public void mongoQuery(WebDriver driver)
 	{
