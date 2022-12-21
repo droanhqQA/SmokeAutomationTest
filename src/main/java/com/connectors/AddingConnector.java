@@ -332,17 +332,7 @@ public class AddingConnector  {
 		FileInputStream fs;
 		XSSFWorkbook workbook;
 		XSSFSheet con_sheet=null;
-		try {
-			final URL resource = AddingConnector.class.getResource("/Automation.xlsx");
-		       System.out.println(resource);
-			
-			 fs = new FileInputStream((resource.toString().substring("file:/".length(),resource.toString().length())));
-			workbook = new XSSFWorkbook(fs);
-			con_sheet = workbook.getSheetAt(sheet_no);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		//Creating a workbook
 		
 		name =Utility_Class.GetExcelData(sheet_no, 1, 1);
