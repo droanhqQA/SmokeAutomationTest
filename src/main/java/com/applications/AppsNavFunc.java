@@ -101,12 +101,12 @@ public class AppsNavFunc {
 		String title = driver.getTitle();
 		System.out.println(title+" ");
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
-//		driver.findElement(By.xpath("//button[@class='sideshow-next-step-button']")).click();
-//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
-		WebElement skipBtn = driver.findElement(By.xpath("//div[@class='skip-button']"));
-		new WebDriverWait(driver, Duration.ofSeconds(60))
-		.until(ExpectedConditions.elementToBeClickable(skipBtn));
-		((JavascriptExecutor)driver).executeScript("arguments[0].click();", skipBtn);
+		driver.findElement(By.xpath("//button[@class='sideshow-next-step-button']")).click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+///		WebElement skipBtn = driver.findElement(By.xpath("//div[@class='skip-button']"));
+//		new WebDriverWait(driver, Duration.ofSeconds(60))
+//		.until(ExpectedConditions.elementToBeClickable(skipBtn));
+//		((JavascriptExecutor)driver).executeScript("arguments[0].click();", skipBtn);
 		try {
 			Thread.sleep(10000);
 		} catch (InterruptedException e) {
@@ -590,7 +590,7 @@ public class AppsNavFunc {
 		final URL resource = AppsNavFunc.class.getResource("/ExportAuto.json");
 	       System.out.println(resource);
 		
-		String exportApp_path = ((resource.toString().substring("file:/".length(),resource.toString().length())));
+		String exportApp_path = (resource.getFile());
 		driver.findElement(By.className("add-microapp-card-image")).click();
 		driver.findElement(By.xpath("//*[@data-type='upload']")).click();
 		driver.findElement(By.xpath("//*[@id='json-file-import']"))
@@ -788,7 +788,7 @@ public class AppsNavFunc {
 		driver.findElement(By.xpath("//*[@data-appname='AutoApp']/div/div[2]/div[2]/div/div/div[2]")).click();//click update app
 
 		final URL resource = AppsNavFunc.class.getResource("/ExportAuto.json");
-		String exportApp_path = ((resource.toString().substring("file:/".length(),resource.toString().length())));
+		String exportApp_path = resource.getFile();
 		driver.findElement(By.xpath("//*[@id='json-file-import']")).sendKeys(exportApp_path);
 		driver.findElement(By.xpath("//*[text()='Continue']/parent::a")).click();
 		getImplicit();
