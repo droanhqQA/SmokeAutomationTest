@@ -569,7 +569,7 @@ public class AddingConnector  {
 		//driver.manage().window().setSize(new Dimension(1920,1080));
 		driver.findElement(By.xpath("//*[@id='username_or_email']")).sendKeys("rahul@dronamobile.com");
 		driver.findElement(By.xpath("//*[@id='password']")).sendKeys("Qwerty@123");
-		WebElement element = driver.findElement(By.xpath("//*[@value='Authorize app']"));
+		WebElement element = driver.findElement(By.xpath("//*[@value='Authorise app']"));
 		//driver.findElement(By.xpath("//*[@id=\"login-button\"]")).click();
 		//((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 		element.sendKeys(Keys.ENTER);
