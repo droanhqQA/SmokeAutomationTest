@@ -27,7 +27,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class AddUserTest extends Base_Class
 {
-//	ChromeDriver driver ;
+	ChromeDriver driver ;
 //	FileInputStream fs ;
 //	String email,pass;
 	AddCheckUsers checkUsers;
@@ -38,18 +38,26 @@ public class AddUserTest extends Base_Class
 	{
 		Timestamp currentTimestamp = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
 		System.out.println(currentTimestamp);
-//		final URL driver_path = AddUserTest.class.getResource("/chromedriver.exe");
-//	    System.out.println(driver_path);
-//		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Vinayak Hene\\Desktop\\DronaHQ\\Browser\\chromedriver.exe");
-//		ChromeOptions options = new ChromeOptions();
-//		options.addArguments("headless");					
-//		options.setAcceptInsecureCerts(true);
-//	    options.addArguments("window-size=1920,800");
-//	    driver = new ChromeDriver(options);
-//		driver.get("https://ubuntu.onprem.dronahq.com/apps");
-//		driver.manage().window().maximize();
+String os=System.getProperty("os.name").toLowerCase();
+		System.out.println("OS name: "+os);
+		String driver_type = os.contains("windows") ? "/chromedriver.exe" :"/var/lib/jenkins/driver/chromedriver";
 		
-		BrowserSetUp();
+		if(os.contains("windows"))
+				{
+			final URL resource = Base_Class.class.getResource(driver_type);
+			System.setProperty("webdriver.chrome.driver", resource.getFile());
+				}
+		else
+			System.setProperty("webdriver.chrome.driver", driver_type);
+		
+		
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("headless");					
+		options.setAcceptInsecureCerts(true);
+	    options.addArguments("window-size=1920,800");
+	    driver = new ChromeDriver(options);
+		driver.get("https://ubuntu.onprem.dronahq.com/apps");
+		driver.manage().window().maximize();
 		
 		checkUsers = new AddCheckUsers(driver);
 		
