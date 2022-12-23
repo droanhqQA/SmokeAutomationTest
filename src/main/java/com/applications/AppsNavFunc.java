@@ -624,9 +624,11 @@ public class AppsNavFunc {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		/*
 		WebElement skipBtn = driver.findElement(By.xpath("//div[@class='skip close']"));
 		new WebDriverWait(driver,Duration.ofSeconds(30))
 		.until(ExpectedConditions.visibilityOf(skipBtn));
+		*/
 		String title = driver.getTitle();
 		System.out.println(title+" ");
 		String no_of_controls = ((JavascriptExecutor)driver)
