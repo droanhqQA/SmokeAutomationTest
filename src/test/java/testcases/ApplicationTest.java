@@ -238,6 +238,7 @@ public class ApplicationTest extends Base_Class
 		navFunc.gitAppUpdate(driver);
 	}
 	
+	@Ignore
 	@Test(priority = 13,retryAnalyzer = RetryAnalyzer.class)
 	public void checkAppExport()
 	{	
