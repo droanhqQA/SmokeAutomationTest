@@ -431,6 +431,12 @@ public class AppsNavFunc {
 		//button click complete
 		waitForSave();
 		checkPreview(driver);
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		driver.findElement(By.xpath("//*[contains(@class,'button control-button')]")).click();
 		try {
 			Thread.sleep(20000);
@@ -515,6 +521,12 @@ public class AppsNavFunc {
 		//button click complete
 		waitForSave();
 		checkPreview(driver);
+		try {
+			Thread.sleep(20000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		driver.findElement(By.xpath("//*[contains(@class,'button control-button')]")).click();
 		
 
