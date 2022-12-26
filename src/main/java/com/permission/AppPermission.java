@@ -141,6 +141,25 @@ public class AppPermission {
 		.until(ExpectedConditions.titleContains("App"));
 		String title = driver.getTitle();
 		System.out.println(title+" ");
+		//click on got it 
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+		driver.findElement(By.xpath("//button[@class='sideshow-next-step-button']")).click();
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//for managing bug related concurrent access
+		List<WebElement> con_access= driver.findElements(By.xpath("//*[text()='Concurrent Access']"));
+		if(con_access.size()>0)
+		{
+			new WebDriverWait(driver, Duration.ofSeconds(30))
+			.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='Switch Access']")));
+			driver.findElement(By.xpath("//span[text()='Switch Access']")).click();
+		}
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(90));
+		
 		String hfPerm = driver.findElement(By.id("hfPermission")).getAttribute("value");
 		System.out.println(hfPerm);
 		return hfPerm;
