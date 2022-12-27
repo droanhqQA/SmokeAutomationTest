@@ -50,9 +50,9 @@ public class AppPermission {
 		String hf_value=menu_opt="";
 		waitMenu(driver);
 		driver.findElement(By.xpath(appOptions)).click();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 		driver.findElement(By.xpath(editPermission)).click();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 		WebElement element=driver.findElement(By.xpath("//div[@class='user-table']/descendant::input[@id='"+permission+"sachin@studion.com']"));
 		
 		JavascriptExecutor js_exe = (JavascriptExecutor)driver;
@@ -101,7 +101,7 @@ public class AppPermission {
 	String checkPreviewOnly(WebDriver driver)
 	{
 		
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 		String getClass=driver.findElement(By.xpath("//div[@data-appname='AutoApp']/descendant::div[contains(@class,'card-menu')]/i")).getAttribute("class");
 		System.out.println(getClass);
 		return getClass;
