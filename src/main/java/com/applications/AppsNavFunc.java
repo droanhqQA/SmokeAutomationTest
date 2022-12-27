@@ -444,12 +444,7 @@ public class AppsNavFunc {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		List<WebElement> swal_content  = driver.findElements(By.xpath("//div[@id='swal2-content']"));
-		if(swal_content.size()<0)
-		{
-			driver.findElement(By.xpath("//*[contains(@class,'button control-button')]")).click();
-			//swal_content  = driver.findElements(By.xpath("//div[@id='swal2-content']"));
-		}
+		
 		getImplicit();
 		String msg = driver.findElement(By.xpath("//div[@id='swal2-content']")).getText();
 		System.out.println(msg);
@@ -543,12 +538,7 @@ public class AppsNavFunc {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		List<WebElement> swal_content  = driver.findElements(By.xpath("//div[@id='swal2-content']"));
-		if(swal_content.size()<0)
-		{
-			driver.findElement(By.xpath("//*[contains(@class,'button control-button')]")).click();
-			//swal_content  = driver.findElements(By.xpath("//div[@id='swal2-content']"));
-		}
+		
 		getImplicit();
 		String msg = driver.findElement(By.xpath("//div[@id='swal2-content']")).getText();
 		System.out.println(msg);
