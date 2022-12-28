@@ -300,7 +300,7 @@ public class ApplicationTest extends Base_Class
 		}
 	
 		
-		driver.quit();
+		driver.close();
 	}
 
 
