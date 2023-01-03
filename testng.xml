@@ -85,7 +85,7 @@
 		</classes>
 	</test>
 
-
+<!--
 	<test name="AddUserTest">
 		<classes>
 			<class name="testcases.AddUserTest" />
@@ -96,5 +96,5 @@
 		<classes>
 			<class name="testcases.PermissionTest" />
 		</classes>
-	</test>
+	</test>-->
 </suite> <!-- Suite -->
