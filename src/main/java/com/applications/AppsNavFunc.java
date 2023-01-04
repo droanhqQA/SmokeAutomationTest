@@ -531,14 +531,6 @@ public class AppsNavFunc {
 		}
 		driver.findElement(By.xpath("//*[contains(@class,'button control-button')]")).click();
 		
-
-		try {
-			Thread.sleep(20000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		getImplicit();
 		String msg = driver.findElement(By.xpath("//div[@id='swal2-content']")).getText();
 		System.out.println(msg);
