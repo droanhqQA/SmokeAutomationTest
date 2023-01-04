@@ -300,7 +300,11 @@ public class ApplicationTest extends Base_Class
 		}
 	
 		
-		driver.quit();
+	 if (driver == null) {
+        	return;
+   		 }
+    	driver.quit();
+    	driver = null;
 	}
 
 
