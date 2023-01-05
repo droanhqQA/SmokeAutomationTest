@@ -36,7 +36,7 @@ public class AppsNavFunc {
 		min_time = timeouts.getMin_time();
 		avg_time = timeouts.getAvg_time();
 	}
-	public void getImplicit()
+	public void getImplicit(WebDriver driver)
 	{
 		driver.manage().timeouts().implicitlyWait(Duration.ofMinutes(5));
 	}
@@ -160,9 +160,9 @@ public class AppsNavFunc {
 		
 		explicitwait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='page-body-box']/div[2]/div/div[1]")));
 		driver.findElement(tablegrid).click();//click tablegrid
-		getImplicit();
+		getImplicit(driver);
 		driver.findElement(By.xpath("//div[@class='top-prop-tabs']/a[2]")).click();//click on datatab(right)
-		getImplicit();
+		getImplicit(driver);
 		//driver.findElement(By.xpath("//div[@class='top-prop-tabs']/a[2]")).click();//click on datatab(right)
 		driver.findElement(By.xpath("//*[@data-type='bindapi']/div/span")).click();//click connectors
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
@@ -195,16 +195,16 @@ public class AppsNavFunc {
 		
 		explicitwait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='page-body-box']/div[2]/div/div[1]")));
 		driver.findElement(tablegrid).click();//click tablegrid
-		getImplicit();
+		getImplicit(driver);
 		driver.findElement(By.xpath("//div[@class='top-prop-tabs']/a[2]")).click();//click on datatab(right)
-		getImplicit();
+		getImplicit(driver);
 		//driver.findElement(By.xpath("//div[@class='top-prop-tabs']/a[2]")).click();//click on datatab(right)
 		driver.findElement(By.xpath("//*[@data-type='bindapi']/div/span")).click();//click connectors
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		driver.findElement(By.xpath("//div[@class='selected-connector-infor-wrap']")).click();//add-conectors
 		driver.findElement(By.xpath("//input[@class='search-service']")).sendKeys("Auto");
 		System.out.println("Finding Connectors");
-		getImplicit();
+		getImplicit(driver);
 		driver.findElement(By.xpath("//div[@title='AutoApi']")).click(); //connectors finding
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		driver.findElement(By.xpath("//div[@class='list pt-2 vertical']/div")).click();//First Api Query
@@ -233,12 +233,12 @@ public class AppsNavFunc {
 		
 		explicitwait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='page-body-box']/div[2]/div/div[1]")));
 		driver.findElement(tablegrid).click();//click tablegrid
-		getImplicit();
+		getImplicit(driver);
 		driver.findElement(By.xpath("//div[@class='top-prop-tabs']/a[2]")).click();//click on datatab(right)
-		getImplicit();
+		getImplicit(driver);
 		//driver.findElement(By.xpath("//div[@class='top-prop-tabs']/a[2]")).click();//click on datatab(right)
 		driver.findElement(By.xpath("//*[@data-type='bindapi']/div/span")).click();//click connectors
-		getImplicit();
+		getImplicit(driver);
 		driver.findElement(By.xpath("//div[@class='selected-connector-infor-wrap']")).click();//add-conectors
 		driver.findElement(By.xpath("//input[@class='search-service']")).sendKeys("Auto");
 		System.out.println("Finding Connectors");
@@ -370,7 +370,7 @@ public class AppsNavFunc {
 		driver.findElement(tablegrid).click();//click tablegrid
 		driver.findElement(By.xpath("//a[@data-tab='delete']")).click();
 		System.out.println("Table grid deleted");
-		getImplicit();
+		getImplicit(driver);
 		driver.findElement(By.xpath("//div[@class='top-butttons']/div[2]")).click();//controls-tab
 		driver.findElement(By.xpath("//input[@class='search-controls-input']")).sendKeys("bu");
 		driver.findElement(By.xpath("//*[@data-field-type=\"Button1\"]/span/span[1]")).click();
@@ -389,7 +389,7 @@ public class AppsNavFunc {
 		//driver.findElement(By.xpath("//input[@type='search']")).sendKeys("Sheets");
 		driver.findElement(By.xpath("//div[@title='AutoApiOAuth2']")).click();
 		System.out.println("Inside APi");
-		getImplicit();
+		getImplicit(driver);
 		driver.findElement(By.xpath("//div[@class='item connector-item']/div[1]")).click();
 		driver.findElement(By.xpath("//*[@id='fbContainer']/div[2]/div[11]/div/div[2]/div[1]/div[6]/div[3]/div/a[2]")).click();//continue btn
 		driver.findElement(By.xpath("//*[@id='fbContainer']/div[2]/div[11]/div/div[2]/div[1]/div[7]/div[5]/div/a[2]")).click();//continue btn
@@ -445,7 +445,7 @@ public class AppsNavFunc {
 			e.printStackTrace();
 		}
 		
-		getImplicit();
+		getImplicit(driver);
 		String msg = driver.findElement(By.xpath("//div[@id='swal2-content']")).getText();
 		System.out.println(msg);
 		//driver.findElement(By.xpath("//*[@class='swal2-actions']/button[1]")).click();
@@ -464,7 +464,7 @@ public class AppsNavFunc {
 		driver.findElement(tablegrid).click();//click tablegrid
 		driver.findElement(By.xpath("//a[@data-tab='delete']")).click();
 		System.out.println("Table grid deleted");
-		getImplicit();
+		getImplicit(driver);
 		driver.findElement(By.xpath("//div[@class='top-butttons']/div[2]")).click();//controls-tab
 		driver.findElement(By.xpath("//input[@class='search-controls-input']")).sendKeys("bu");
 		driver.findElement(By.xpath("//*[@data-field-type=\"Button1\"]/span/span[1]")).click();
@@ -483,7 +483,7 @@ public class AppsNavFunc {
 		//driver.findElement(By.xpath("//input[@type='search']")).sendKeys("Sheets");
 		driver.findElement(By.xpath("//div[@title='AutoApiOAuth1']")).click();
 		System.out.println("Inside APi");
-		getImplicit();
+		getImplicit(driver);
 		driver.findElement(By.xpath("//div[@class='item connector-item']/div[1]")).click();
 		driver.findElement(By.xpath("//*[@id='fbContainer']/div[2]/div[11]/div/div[2]/div[1]/div[6]/div[3]/div/a[2]")).click();//continue btn
 		driver.findElement(By.xpath("//*[@id='fbContainer']/div[2]/div[11]/div/div[2]/div[1]/div[7]/div[5]/div/a[2]")).click();//continue btn
@@ -526,7 +526,7 @@ public class AppsNavFunc {
 		
 		driver.findElement(By.xpath("//*[contains(@class,'button control-button')]")).click();
 		
-		getImplicit();
+		getImplicit(driver);
 		String msg = driver.findElement(By.xpath("//div[@id='swal2-content']")).getText();
 		System.out.println(msg);
 		//driver.findElement(By.xpath("//*[@class='swal2-actions']/button[1]")).click();
@@ -642,7 +642,7 @@ public class AppsNavFunc {
 	
 	public void addSSHKey(WebDriver driver)
 	{
-		getImplicit();
+		getImplicit(driver);
 		driver.findElement(By.xpath("//*[@class='new-profile-icon']")).click();
 		WebElement acc_settings = driver.findElement(By.xpath("//span[text()='Account Settings']"));
 		Actions action = new Actions(driver);
@@ -653,7 +653,7 @@ public class AppsNavFunc {
 		WebElement manage = driver.findElement(By.xpath("//div[@class='setting-list-int']/div[5]/descendant::a"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", manage);
 		manage.click();
-		getImplicit();
+		getImplicit(driver);
 		driver.findElement(By.xpath("//*[text()=' Add Key ']")).click();
 		driver.findElement(By.xpath("//*[@id='key-name-ip']")).sendKeys("ssh_key_"+System.nanoTime());
 		driver.findElement(By.xpath("//span[text()='Generate Key & Save']/parent::a")).click();
@@ -786,7 +786,7 @@ public class AppsNavFunc {
 	
 	public void appUpdateJson(WebDriver driver)
 	{
-		getImplicit();
+		getImplicit(driver);
 		driver.findElement(By.xpath("//*[@data-appname='AutoApp']/div/div[2]/div[2]")).click();//open Menu
 		driver.findElement(By.xpath("//*[@data-appname='AutoApp']/div/div[2]/div[2]/div/div/div[2]")).click();//click update app
 
@@ -794,12 +794,12 @@ public class AppsNavFunc {
 		String exportApp_path = resource.getFile();
 		driver.findElement(By.xpath("//*[@id='json-file-import']")).sendKeys(exportApp_path);
 		driver.findElement(By.xpath("//*[text()='Continue']/parent::a")).click();
-		getImplicit();
+		getImplicit(driver);
 		driver.findElement(By.xpath("//*[text()='Confirm & Update']/parent::a")).click();
-		getImplicit();
+		getImplicit(driver);
 		String success_import = driver.findElement(By.xpath("//div[@class='event-body']")).getText();
 		System.out.println(success_import);
-		getImplicit();
+		getImplicit(driver);
 		driver.findElement(By.xpath("//div[@class='event-button']/div")).click();
 		
 		new WebDriverWait(driver,Duration.ofMinutes(5))
@@ -831,7 +831,7 @@ public class AppsNavFunc {
 	}
 	public void gitAppUpdate(WebDriver driver)
 	{
-		getImplicit();
+		getImplicit(driver);
 		driver.findElement(By.xpath("//*[@data-appname='AutoApp']/div/div[2]/div[2]")).click();//open Menu
 		driver.findElement(By.xpath("//*[@data-appname='AutoApp']/div/div[2]/div[2]/div/div/div[2]")).click();//click update app
 		driver.findElement(By.xpath("//*[@for='gitpull']")).click();
@@ -844,12 +844,12 @@ public class AppsNavFunc {
 		driver.findElement(By.xpath("//*[@class='git-connection-info']/div[4]/div")).click();
 		driver.findElement(By.xpath("//*[@data-value='main']")).click();
 		driver.findElement(By.xpath("//*[text()='Continue']/parent::a")).click();
-		getImplicit();
+		getImplicit(driver);
 		driver.findElement(By.xpath("//*[text()='Confirm & Update']/parent::a")).click();
-		getImplicit();
+		getImplicit(driver);
 		String success_import = driver.findElement(By.xpath("//div[@class='event-body']")).getText();
 		System.out.println(success_import);
-		getImplicit();
+		getImplicit(driver);
 		driver.findElement(By.xpath("//div[@class='event-button']/div")).click();
 		
 		new WebDriverWait(driver,Duration.ofMinutes(5))
@@ -884,9 +884,9 @@ public class AppsNavFunc {
 		gotoApp(driver);
 		driver.findElement(By.xpath("//img[@class='setting-icon-image']/parent::button")).click();
 		driver.findElement(By.xpath("//*[@id='openConfig']/div/descendant::span[contains(text(),'Export')]")).click();
-		getImplicit();
+		getImplicit(driver);
 		driver.findElement(By.xpath("//*[@id='exportTemplate']")).click();
-		getImplicit();
+		getImplicit(driver);
 		driver.findElement(By.xpath("//div[@class='hq-primary-btn download-json-btn ml-2 pointer']")).click();
 		try {
 			Thread.sleep(2000);
