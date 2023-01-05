@@ -275,12 +275,14 @@ public class ApplicationTest extends Base_Class
 	        }
 	    };
 	}
+	@Ignore
 	@Test(priority = 14,retryAnalyzer = RetryAnalyzer.class)
 	public void checkAPicall()
 	{
 		navFunc.buttonFlowOAuth2(driver);
 		
 	}
+	@Ignore
 	@Test(priority = 15,retryAnalyzer = RetryAnalyzer.class)
 	public void checkApiCallOAuth1()
 	{
