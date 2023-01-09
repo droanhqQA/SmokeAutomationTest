@@ -7,7 +7,7 @@ import com.dao.UserLogin;
 import com.manageusers.AddCheckUsers;
 import com.utils.Base_Class;
 import com.utils.TakeScreenshots;
-
+import java.io.IOException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -65,7 +65,7 @@ String os=System.getProperty("os.name").toLowerCase();
 	}
 	//@Ignore
 	@Test(retryAnalyzer = RetryAnalyzer.class)
-	public void AddUser()
+	public void AddUser() throws IOException
 	{	
 		new_email = checkUsers.generateEmail();
 		String checkEmail = checkUsers.addCheckUser(new_email);
