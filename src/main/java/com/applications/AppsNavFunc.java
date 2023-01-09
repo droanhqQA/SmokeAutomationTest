@@ -38,6 +38,7 @@ public class AppsNavFunc {
 	}
 	public void getImplicit(WebDriver driver)
 	{
+		//failing testcases bz of null pointer
 		driver.manage().timeouts().implicitlyWait(Duration.ofMinutes(5));
 	}
 
@@ -786,7 +787,7 @@ public class AppsNavFunc {
 	
 	public void appUpdateJson(WebDriver driver)
 	{
-		getImplicit(driver);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 		driver.findElement(By.xpath("//*[@data-appname='AutoApp']/div/div[2]/div[2]")).click();//open Menu
 		driver.findElement(By.xpath("//*[@data-appname='AutoApp']/div/div[2]/div[2]/div/div/div[2]")).click();//click update app
 
@@ -794,12 +795,12 @@ public class AppsNavFunc {
 		String exportApp_path = resource.getFile();
 		driver.findElement(By.xpath("//*[@id='json-file-import']")).sendKeys(exportApp_path);
 		driver.findElement(By.xpath("//*[text()='Continue']/parent::a")).click();
-		getImplicit(driver);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 		driver.findElement(By.xpath("//*[text()='Confirm & Update']/parent::a")).click();
-		getImplicit(driver);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 		String success_import = driver.findElement(By.xpath("//div[@class='event-body']")).getText();
 		System.out.println(success_import);
-		getImplicit(driver);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 		driver.findElement(By.xpath("//div[@class='event-button']/div")).click();
 		
 		new WebDriverWait(driver,Duration.ofMinutes(5))
@@ -831,7 +832,7 @@ public class AppsNavFunc {
 	}
 	public void gitAppUpdate(WebDriver driver)
 	{
-		getImplicit(driver);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 		driver.findElement(By.xpath("//*[@data-appname='AutoApp']/div/div[2]/div[2]")).click();//open Menu
 		driver.findElement(By.xpath("//*[@data-appname='AutoApp']/div/div[2]/div[2]/div/div/div[2]")).click();//click update app
 		driver.findElement(By.xpath("//*[@for='gitpull']")).click();
@@ -844,12 +845,12 @@ public class AppsNavFunc {
 		driver.findElement(By.xpath("//*[@class='git-connection-info']/div[4]/div")).click();
 		driver.findElement(By.xpath("//*[@data-value='main']")).click();
 		driver.findElement(By.xpath("//*[text()='Continue']/parent::a")).click();
-		getImplicit(driver);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 		driver.findElement(By.xpath("//*[text()='Confirm & Update']/parent::a")).click();
-		getImplicit(driver);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 		String success_import = driver.findElement(By.xpath("//div[@class='event-body']")).getText();
 		System.out.println(success_import);
-		getImplicit(driver);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 		driver.findElement(By.xpath("//div[@class='event-button']/div")).click();
 		
 		new WebDriverWait(driver,Duration.ofMinutes(5))
@@ -884,9 +885,9 @@ public class AppsNavFunc {
 		gotoApp(driver);
 		driver.findElement(By.xpath("//img[@class='setting-icon-image']/parent::button")).click();
 		driver.findElement(By.xpath("//*[@id='openConfig']/div/descendant::span[contains(text(),'Export')]")).click();
-		getImplicit(driver);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 		driver.findElement(By.xpath("//*[@id='exportTemplate']")).click();
-		getImplicit(driver);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 		driver.findElement(By.xpath("//div[@class='hq-primary-btn download-json-btn ml-2 pointer']")).click();
 		try {
 			Thread.sleep(2000);
