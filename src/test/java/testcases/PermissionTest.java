@@ -61,8 +61,8 @@ public class PermissionTest {
 		UserDAO userDAO = new UserDAO(fs, workbook, user_sheet);
 		// ConDetailDAO detailDAO = new ConDetailDAO(fs, workbook, con_sheet);
 
-		String u_name = userDAO.getU_name();
-		String u_pass = userDAO.getU_pass();
+		String u_name =Utility_Class.GetExcelData(0, 0, 1) ;
+		String u_pass = Utility_Class.GetExcelData(0, 1, 1) ;
 		String con_name, con_string, con_uname, con_upass, con_db;
 		// System.out.println(detailDAO.connectionName()+"\n"+detailDAO.connectionString());
 		final URL driver_path = ConnectorsTest.class.getResource("/chromedriver.exe");
