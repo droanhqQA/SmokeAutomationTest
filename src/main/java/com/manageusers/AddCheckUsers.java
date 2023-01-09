@@ -25,7 +25,7 @@ public class AddCheckUsers {
 		String new_email ="test" + System.nanoTime() + "@studio.com";
 		return new_email;
 	}
-	public String addCheckUser(String email)
+	public String addCheckUser(String email) throws IOException
 	{
 		String u_name = Utility_Class.GetExcelData(0, 0, 1) ;
 		String u_pass = Utility_Class.GetExcelData(0, 1, 1) ;
