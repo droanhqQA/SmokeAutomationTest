@@ -53,7 +53,7 @@ public class AppPermission {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 		driver.findElement(By.xpath(editPermission)).click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
-		WebElement element=driver.findElement(By.xpath("//div[@class='user-table']/descendant::input[@id='"+permission+"sachin@studion.com']"));
+		WebElement element=driver.findElement(By.xpath("//div[@class='user-table']/descendant::input[@id='"+permission+"sachin@studio.com']"));
 		
 		JavascriptExecutor js_exe = (JavascriptExecutor)driver;
 		js_exe.executeScript("arguments[0].click();", element);
@@ -179,7 +179,7 @@ public class AppPermission {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.findElement(By.xpath(edit_permission)).click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-		WebElement element=driver.findElement(By.xpath("//div[@class='user-table']/descendant::input[@id='"+permission+"sachin@studion.com']"));
+		WebElement element=driver.findElement(By.xpath("//div[@class='user-table']/descendant::input[@id='"+permission+"sachin@studio.com']"));
 		
 		JavascriptExecutor js_exe = (JavascriptExecutor)driver;
 		js_exe.executeScript("arguments[0].click();", element);
