@@ -36,7 +36,7 @@ public class AppPermission {
 		driver.findElement(By.xpath("//*[@class='settings-option logout-button']")).click();
 		driver.findElement(By.xpath("//*[contains(@class,'logout')]/descendant::div[@class='positive button']")).click();
 		UserLogin user = new UserLogin(driver);
-		user.login("sachin@studion.com", "qwerty");
+		user.login("sachin@studio.com", "qwerty");
 		
 	}
 	public void waitMenu(WebDriver driver)
