@@ -27,8 +27,8 @@ public class AddCheckUsers {
 	}
 	public String addCheckUser(String email)
 	{
-		String u_name = "brijesh@studio.com";
-		String u_pass = "qwerty";
+		String u_name = Utility_Class.GetExcelData(0, 0, 1) ;
+		String u_pass = Utility_Class.GetExcelData(0, 1, 1) ;
 	
 		UserLogin user = new UserLogin(driver);
 		user.login(u_name,u_pass);
