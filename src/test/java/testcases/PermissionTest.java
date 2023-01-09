@@ -29,7 +29,7 @@ import com.permission.AppPermission;
 import com.permission.ConnectorPermission;
 import com.permission.GroupPermission;
 import com.utils.TakeScreenshots;
-
+import com.utils.Utility_Class;
 public class PermissionTest {
 	AddingConnector connector;
 	ChromeDriver driver;
