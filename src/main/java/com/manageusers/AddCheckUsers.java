@@ -35,12 +35,18 @@ public class AddCheckUsers {
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		driver.findElement(By.xpath("//div[@class='sidebar-options']/div[@data-header='Users']")).click();
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		((JavascriptExecutor)driver).executeScript("arguments[0].click();", 
 				driver.findElement(By.xpath("//*[@id='invite-user-button']")));
-		Actions act = new Actions(driver);
+		//Actions act = new Actions(driver);
 		//Double click on element
-		WebElement ele = driver.findElement(By.xpath("//*[@id='invite-user-button']")); 
-		act.doubleClick(ele).perform();
+		//WebElement ele = driver.findElement(By.xpath("//*[@id='invite-user-button']")); 
+		//act.doubleClick(ele).perform();
 	//	driver.findElement(By.xpath("//*[@id='invite-user-button']")).click();
 		new WebDriverWait(driver, Duration.ofSeconds(180))
 		.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@class='invite-u-name-ip form-control w-30']")));
