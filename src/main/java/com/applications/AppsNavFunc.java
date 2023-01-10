@@ -213,6 +213,7 @@ public class AppsNavFunc {
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		System.out.println("Clicked on Continue");
 		driver.findElement(By.xpath("//div[@class='sel-keys-dp-wrap d-flex f-column']/div[1]")).click();//dropList
+		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		driver.findElement(By.xpath("//div[@title='records.id']")).click();
 		driver.findElement(By.xpath("//div[@title='records.fields']")).click();
 		driver.findElement(By.xpath("//div[@title='records.fields.Name']")).click();
@@ -250,6 +251,7 @@ public class AppsNavFunc {
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		System.out.println("Clicked on Continue");
 		driver.findElement(By.xpath("//div[@class='sel-keys-dp-wrap d-flex f-column']/div[1]")).click();//dropList
+		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		driver.findElement(By.xpath("//div[@title='data.country.name']")).click();
 		driver.findElement(By.xpath("//div[@title='data.country.native']")).click();
 		driver.findElement(By.xpath("//div[@title='data.country.currency']")).click();
